@@ -8,6 +8,7 @@ class KeepAccount extends React.Component {
     this.state = {
       revenue: 0,
       save: 0,
+      basicCost:0,
       cost: 0,
       Result: '',
       totalDay: 0,
@@ -15,23 +16,33 @@ class KeepAccount extends React.Component {
     this.getCal = this.getCal.bind(this)
   }
 
+  //設定基本花費
+  getBasicCost(e) {
+    let userCost = e.target.value
+    this.setState({ basicCost: userCost })
+  }
+  //設定平均每日花費預算
   getCost(e) {
     let cal = this.state.revenue - this.state.cost * this.state.totalDay
     let userCost = e.target.value
     this.setState({ cost: userCost })
   }
 
+  //設定收入
   getRevenue(e) {
     let userRevenue = e.target.value
     this.setState({ revenue: userRevenue })
   }
+
+  //設定目標儲蓄額
   getSave(e) {
     let userSave = e.target.value
     this.setState({ save: userSave })
   }
 
+  //欲得到結果
   getCal() {
-    let cal = this.state.revenue - this.state.cost * this.state.totalDay
+    let cal = this.state.revenue - this.state.cost * this.state.totalDay-this.state.basicCost
     let res
 
     if (cal > this.state.save) {
@@ -47,6 +58,7 @@ class KeepAccount extends React.Component {
     this.setState({ Result: res })
   }
 
+  //獲取當月總天數
   componentWillMount(a) {
     let today = new Date()
     let thisYear = today.getFullYear()
@@ -76,7 +88,14 @@ class KeepAccount extends React.Component {
                 name="save"
                 onChange={this.getSave.bind(this)}
               />
-              <span className="cost-color">今日花費: </span>
+              <span className="cost-color">基本花費: </span>
+              {/* <span>{this.state.cost}</span> */}
+              <input
+                type="text"
+                name="cost"
+                onChange={this.getBasicCost.bind(this)}
+              />
+              <span className="cost-color">平均每日花費預算: </span>
               {/* <span>{this.state.cost}</span> */}
               <input
                 type="text"
@@ -89,7 +108,6 @@ class KeepAccount extends React.Component {
               <p>結果：</p>
               <p>{this.state.Result}</p>
             </div>
-            {/* <Chart onClick={() => this.state} /> */}
             <ChartjsPie info={this.state} />
           </div>
         </div>
