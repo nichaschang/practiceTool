@@ -1,0 +1,87 @@
+
+body {
+    font-family: "Roboto","Montserrat", "微軟正黑體", sans-serif;
+  }
+
+  .basic-box {
+      position: relative;
+      min-height: 100vh;
+      background-color: #444;
+      height: 50vh;
+      width:100vw;
+      color:#FFD366;
+      & button {
+        border:none;
+        padding:5px 15px;
+        background: #FFD366;
+        border-radius: 5px;
+        color: #666;
+      }
+      & input[type=text]{
+          border:1px solid #666;
+          padding: 5px ;
+          border-radius: 5px;
+          margin: 15px 0px;
+          width:250px;
+      }
+  }
+
+
+  .content{
+    width: 1024px;
+    margin:0px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .num-input {
+      display: flex;
+      min-width: 50%;
+      margin:0px 20px;
+      padding: 20px 5px;
+      flex-direction: column;;
+  }
+
+  .revenue-color{
+    margin-left: 25px;
+    position: relative;
+    &::after{
+      position: absolute;
+      top:0;
+      left:-25px;
+      display: block;
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: rgba(150,202,202,0.8);
+    }
+  }
+  .save-color{
+    margin-left: 25px;
+    position: relative;
+    &::after{
+      position: absolute;
+      top:0;
+      left:-25px;
+      display: block;
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: rgba(148,255,150,0.8);
+    }
+  }
+  .cost-color{
+    margin-left: 25px;
+    position: relative;
+    &::after{
+      position: absolute;
+      top:0;
+      left:-25px;
+      display: block;
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: rgba(255,82,82,0.8);
+    }
+  }
